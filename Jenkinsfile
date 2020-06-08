@@ -1,20 +1,11 @@
 pipeline {
-    agent any
+    agent {
+        docker { image 'node:7-alpine' }
+    }
     stages {
-        stage('Example') {
-            input {
-                message "Should we continue?"
-                ok "Yes, we should."
-                submitter "alice,bob"
-                parameters {
-                    string(name: 'PERSON', defaultValue: 'Zul', description: 'Who should I say hello to?')
-                }
-            }
-            when {
-                equals expected: "Zul", actual: "${PERSON}"
-            }
+        stage('Test') {
             steps {
-                echo "Hello, ${PERSON}, nice to meet you."
+                sh 'node --version'
             }
         }
     }
