@@ -7,11 +7,11 @@ pipeline {
                 ok "Yes, we should."
                 submitter "alice,bob"
                 parameters {
-                    string(name: 'PERSON', defaultValue: 'Mr Jenkins', description: 'Who should I say hello to?')
+                    string(name: 'PERSON', defaultValue: 'Zul', description: 'Who should I say hello to?')
                 }
             }
             when {
-                equals expected: "Fred", actual: "${PERSON}"
+                equals expected: "Zul", actual: "${PERSON}"
             }
             steps {
                 echo "Hello, ${PERSON}, nice to meet you."
